@@ -19,19 +19,19 @@ var marker = new mapboxgl.Marker()
   .setPopup(popup)
   .addTo(map);
 
-studentPizzaShops.forEach(function(studentData) {
+theatres.forEach(function(theatreData) {
 
-  var thisStudentsColor = 'steelblue';
-  if (studentData.nyuprogram === 'wagner') thisStudentsColor = 'orange';
-  if (studentData.nyuprogram === 'cusp') thisStudentsColor = 'purple';
-  if (studentData.nyuprogram === 'adjunct') thisStudentsColor = 'green';
-  if (studentData.nyuprogram === 'global liberal studies') thisStudentsColor = 'yellow';
+  var thisTheatreColor = 'steelblue';
+  if (theatreData.theatre_review_count > 20) thisTheatreColor = 'orange';
+  if (theatreData.theatre_review_count > 50) thisTheatreColor = 'purple';
+  if (theatreData.theatre_review_count > 150) thisTheatreColor = 'green';
+  if (theatreData.theatre_review_count > 500) thisTheatreColor = 'yellow';
 
   new mapboxgl.Marker({
-    color: thisStudentsColor,
+    color: thisTheatreColor,
   })
-    .setLngLat([studentData.lng, studentData.lat])
+    .setLngLat([theatreData.theatre_coordinates_longitude, theatreData.theatre_coordinates_latitude])
     .setPopup(new mapboxgl.Popup({ offset: 40 })
-      .setText(`${studentData.name} says their favorite pizza shop is ${studentData.favoritepizzashop}`))
+      .setText(`${theatreData.theatre_name} has a rating of ${theatreData.theatre_rating} out of 5 on Yelp`))
     .addTo(map);
 })
