@@ -12,7 +12,7 @@ var map = new mapboxgl.Map({
 map.addControl(new mapboxgl.NavigationControl());
 
 var popup = new mapboxgl.Popup({ offset: 0 })
-  .setText('Hi!');
+  .setText('Hello!!');
 
 var marker = new mapboxgl.Marker()
   .setLngLat([-74.008015,40.7090362])
