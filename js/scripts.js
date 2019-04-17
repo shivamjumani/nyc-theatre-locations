@@ -1,11 +1,12 @@
 // sets up my mapbox access token so they can track my usage of their basemap services
 mapboxgl.accessToken = 'pk.eyJ1Ijoic2hpdmFtOTk3IiwiYSI6ImNqdWQ5ZDBicDB3bmE0ZHJ2NzF0Zjd4MHAifQ.klvBSqkgGNt7aNjxU7x0Gg';
 
+
 var map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/mapbox/light-v9',
-  center: [-73.98, 40.70],
-  zoom: 9.5,
+  center: [-73.966999,40.739584],
+  zoom: 11.5,
 });
 
 //add markers to map
@@ -18,15 +19,10 @@ geojson.features.forEach(function(marker) {
   // make a marker for each feature and add to the map
   new mapboxgl.Marker(el)
     .setLngLat(marker.geometry.coordinates)
+    .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+      .setHTML('<h3>' + marker.properties.theatre_name + '</h3><p>' + "Rating of " + marker.properties.theatre_rating + " out of 5 on Yelp" + '</p>'))
     .addTo(map);
 });
-
-new mapboxgl.Marker(el)
-  .setLngLat(marker.geometry.coordinates)
-  .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-    .setHTML('<h3>' + marker.properties.theatre_name + '</h3><p>' + "Rating of" + marker.properties.theatre_rating + "out of 5 on Yelp" + '</p>'))
-  .addTo(map);
-
 
 //Add zoom and rotation controls to the map.
 map.addControl(new mapboxgl.NavigationControl());
