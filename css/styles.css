@@ -1,8 +1,35 @@
+body {
+  background-color: #ddd;
+}
+
 #map {
   height: 500px;
-  width: 100%;
+  width: 650px;
   background: lightgray;
-  margin: 0 auto;
+  padding: 30%
+  margin: 15px;
+}
+
+h1 {
+  font-family: 'Open Sans', sans-serif;
+}
+
+h3 {
+  font-family: 'Open Sans', sans-serif;
+}
+
+#text {
+  font-family: 'Open Sans', sans-serif;
+  width: 650px
+}
+
+.blue-marker {
+  background-image: url('mapbox-icon.png');
+  background-size: cover;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 .marker {

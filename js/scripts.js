@@ -14,13 +14,21 @@ geojson.features.forEach(function(marker) {
 
   // create a HTML element for each feature
   var el = document.createElement('div');
-  el.className = 'marker';
+    // if (marker.properties.theatre_review_count > '20') el.className = 'blue-marker';
+    // if (marker.properties.theatre_review_count > 20) el.className = 'blue-marker';
+    // if (marker.properties.theatre_review_count > 20) el.className = 'blue-marker';
+    // if (marker.properties.theatre_review_count > 20) el.className = 'blue-marker';
+    el.className = 'marker';
+
+
 
   // make a marker for each feature and add to the map
   new mapboxgl.Marker(el)
     .setLngLat(marker.geometry.coordinates)
-    .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-      .setHTML('<h3>' + marker.properties.theatre_name + '</h3><p>' + "Rating of " + marker.properties.theatre_rating + " out of 5 on Yelp" + '</p>'))
+    .setPopup(new mapboxgl.Popup({ offset: 5 }) // add popups
+      .setHTML('<h3>' + marker.properties.theatre_name + '</h3><p>' + "Rating: " +
+        marker.properties.theatre_rating + " out of 5" + '</p><p>' + "No. of reviews: " +
+        marker.properties.theatre_review_count + '</p>' ))
     .addTo(map);
 });
 
